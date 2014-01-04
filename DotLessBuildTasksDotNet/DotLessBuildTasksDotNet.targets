@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <AvailableItemName Include="CompileLessFile" />
+    <AvailableItemName Include="LessCompiler" />
+  </ItemGroup>
+
+  <Target Name="DotLessBuildTasksDotNet"
+          AfterTargets="BeforeBuild"
+          Inputs="@(CompileLessFile)"
+          Outputs="$([System.String]::Copy('%(CompileLessFile.FullPath)').Replace('.less','.css'))">
+    <PropertyGroup>
+      <LessCompiler>%(LessCompiler.FullPath)</LessCompiler>
+      <LessCompiler Condition="'$(LessCompiler)' == ''">$(MSBuildProjectDirectory)\..\packages\dotless.1.4.0.0\tool\dotless.compiler.exe</LessCompiler>     
+    </PropertyGroup>
+    
+    <Exec Command='"$(LessCompiler)" "%(CompileLessFile.FullPath)"' />
+  </Target>
+</Project>
