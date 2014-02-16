@@ -6,9 +6,13 @@
     <AvailableItemName Include="LessCompiler" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PotentialCompileLessFile Include=".\**\*.less" />
+  </ItemGroup>
+
   <Target Name="DotLessBuildTasksDotNet"
           AfterTargets="BeforeBuild"
-          Inputs="@(CompileLessFile)"
+          Inputs="@(PotentialCompileLessFile)"
           Outputs="$([System.String]::Copy('%(CompileLessFile.FullPath)').Replace('.less','.css'))">
     <PropertyGroup>
       <LessCompiler>%(LessCompiler.FullPath)</LessCompiler>

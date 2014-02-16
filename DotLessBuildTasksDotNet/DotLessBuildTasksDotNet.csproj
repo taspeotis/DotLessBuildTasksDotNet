@@ -34,6 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="DotLessBuildTasksDotNet.nuspec" />
+    <None Include="extra.less" />
     <None Include="packages.config" />
     <CompileLessFile Include="less.less" />
   </ItemGroup>
