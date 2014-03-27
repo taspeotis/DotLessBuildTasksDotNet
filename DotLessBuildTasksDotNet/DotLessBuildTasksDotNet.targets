@@ -3,22 +3,16 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <AvailableItemName Include="CompileLessFile" />
-    <AvailableItemName Include="LessCompiler" />
   </ItemGroup>
 
   <ItemGroup>
     <PotentialCompileLessFile Include=".\**\*.less" />
   </ItemGroup>
-
+  
   <Target Name="DotLessBuildTasksDotNet"
           AfterTargets="BeforeBuild"
           Inputs="@(PotentialCompileLessFile)"
-          Outputs="$([System.String]::Copy('%(CompileLessFile.FullPath)').Replace('.less','.css'))">
-    <PropertyGroup>
-      <LessCompiler>%(LessCompiler.FullPath)</LessCompiler>
-      <LessCompiler Condition="'$(LessCompiler)' == ''">$(MSBuildProjectDirectory)\..\packages\dotless.1.4.0.0\tool\dotless.compiler.exe</LessCompiler>     
-    </PropertyGroup>
-    
-    <Exec Command='"$(LessCompiler)" "%(CompileLessFile.FullPath)"' />
+          Outputs="$([System.String]::Copy('%(CompileLessFile.FullPath)').Replace('.less','.css'))">   
+    <Exec Command='"$(MSBuildThisFileDirectory)less.js-windows-v1.6.2\lessc.cmd" "%(CompileLessFile.FullPath)" > "$([System.String]::Copy("%(CompileLessFile.FullPath)").Replace(".less",".css"))"' />
   </Target>
 </Project>

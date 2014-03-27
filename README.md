@@ -1,6 +1,6 @@
 # DotLessBuildTasksDotNet
 
-Use dotless to automatically compile `.less` files to `.css`.
+Use less.js-windows to automatically compile `.less` files to `.css`.
 
 ## Installing DotLessBuildTasksDotNet
 
@@ -12,7 +12,7 @@ Use NuGet to install the [`DotLessBuildTasksDotNet`](https://www.nuget.org/packa
 
 ## Using DotLessBuildTasksDotNet
 
-DotLessBuildTasksDotNet adds two custom build actions to your project - `CompileLessFile` and `LessCompiler`.
+DotLessBuildTasksDotNet adds a custom build action to your project - `CompileLessFile`.
 
 `CompileLessFile` is used to indicate that a `.less` file should be compiled into a `.css` file.
 
@@ -20,12 +20,10 @@ DotLessBuildTasksDotNet adds two custom build actions to your project - `Compile
 
 DotLessBuildTasksDotNet will run before your project builds and compile each `.less` file into a `.css` file. They are not automatically added to your project, you'll need to do that yourself.
 
-`LessCompiler` allows you to specify the `dotless` compiler executable. If this isn't specified then the executable is assumed to be `dotless.1.4.0.0\tool\dotless.compiler.exe` (found inside the NuGet `packages` folder).
-
 ## Miscellaney
 
-If you're using a source control system that can be sensitive to line endings (e.g. Git with `text=auto`) then consider ignoring the output files. `dotless` has been observed to output files with `\n` instead of `\r\n\`.
+If you're using a source control system then consider ignoring the output files.
 
-> If you're using Git and can isolate the output files to one directory (e.g. `MyProject\Less`) then you can quickly ignore all `.css` files by creating a `.gitignore` file in the one directory with the following contents:
+> If you're using Git and can isolate the output files to one directory (e.g. `MyProject\Less`) then you can quickly ignore all `.css` files by creating a `.gitignore` file in that directory with the following contents:
 >
 >     *.css
