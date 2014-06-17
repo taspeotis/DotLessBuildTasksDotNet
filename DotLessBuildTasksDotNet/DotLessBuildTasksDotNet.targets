@@ -13,6 +13,6 @@
           AfterTargets="BeforeBuild"
           Inputs="@(PotentialCompileLessFile)"
           Outputs="$([System.String]::Copy('%(CompileLessFile.FullPath)').Replace('.less','.css'))">   
-    <Exec Command='"$(MSBuildThisFileDirectory)less.js-windows-v1.6.2\lessc.cmd" "%(CompileLessFile.FullPath)" > "$([System.String]::Copy("%(CompileLessFile.FullPath)").Replace(".less",".css"))"' />
+    <Exec Command='"$(MSBuildThisFileDirectory)less.js-windows-v1.7.0\lessc.cmd" "%(CompileLessFile.FullPath)" > "$([System.String]::Copy("%(CompileLessFile.FullPath)").Replace(".less",".css"))"' />
   </Target>
 </Project>
